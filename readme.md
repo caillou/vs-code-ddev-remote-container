@@ -4,6 +4,23 @@ In this repo, I try to setup a VS Code [Remote Container](https://code.visualstu
 
 [https://github.com/microsoft/vscode-remote-try-php](vscode-remote-try-php) as used as a starting-point for this playground.
 
+## Todo
+
+- [ ] Start `dockerd` when the container starts.
+- [ ] Fix the following `ddev` build error:
+  ```
+  Fatal error: Uncaught RuntimeException: Could not create directory "/var/www/html/app/var/log/"! in /var/www/html/app/public/typo3/sysext/core/Classes/Utility/GeneralUtility.php:2047
+  Stack trace:
+  #0 /var/www/html/app/public/typo3/sysext/core/Classes/Utility/GeneralUtility.php(2015): TYPO3\CMS\Core\Utility\GeneralUtility::createDirectoryPath('/var/www/html/a...')
+  #1 /var/www/html/app/public/typo3/sysext/core/Classes/Log/Writer/FileWriter.php(226): TYPO3\CMS\Core\Utility\GeneralUtility::mkdir_deep('/var/www/html/a...')
+  #2 /var/www/html/app/public/typo3/sysext/core/Classes/Log/Writer/FileWriter.php(192): TYPO3\CMS\Core\Log\Writer\FileWriter->createLogFile()
+  #3 /var/www/html/app/public/typo3/sysext/core/Classes/Log/Writer/FileWriter.php(122): TYPO3\CMS\Core\Log\Writer\FileWriter->openLogFile()
+  #4 /var/www/html/app/public/typo3/sysext/core/Classes/Log/Writer/FileWriter.php(81): TYPO3\CMS\Core\Log\Writer\FileWriter->setLogFile('/var/www/html/a...')
+  #5 /var/www/html/app/public/typo3/sysext/core/Classes/Utility/GeneralUtility.php in /var/www/html/app/public/typo3/sysext/core/Classes/Utility/GeneralUtility.php on line 2047
+  ```
+- [ ] Automatically generate and persist `ssh` keys on first start.
+- [ ] Persist `zsh` history.
+
 ## Preparing the Host
 
 I personally chose a Hetzner `CCX31` instance to host my development environment, running Ubuntu 20.04 and accessed as follows:
