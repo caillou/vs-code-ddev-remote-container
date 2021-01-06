@@ -1,27 +1,26 @@
-// For format details, see https://aka.ms/vscode-remote/devcontainer.json or this file's README at:
+// For format details, see the following files:
+//
+// https://aka.ms/vscode-remote/devcontainer.json
 // https://github.com/microsoft/vscode-dev-containers/tree/v0.134.0/containers/javascript-node
 {
   "name": "Node.js",
   "build": {
     "dockerfile": "Dockerfile",
-    // Update 'VARIANT' to pick a Node version: 10, 12, 14
+    // Node version
     "args": { "VARIANT": "14" }
   },
 
-  // Set *default* container specific settings.json values on container create.
+  "runArgs": ["-v", "/var/run/docker.sock:/var/run/docker.sock"],
+
+  "workspaceFolder": "/workspace",
+  "workspaceMount": "source=/home/node/workspace,target=/workspace,type=bind,consistency=cached",
+
   "settings": {
-    "terminal.integrated.shell.linux": "/bin/bash"
+    // Default container specific settings.json
+    "terminal.integrated.shell.linux": "/bin/zsh"
   },
 
-  // Add the IDs of extensions you want installed when the container is created.
   "extensions": ["dbaeumer.vscode-eslint"],
-
-  // Use 'forwardPorts' to make a list of ports inside the container available locally.
   "forwardPorts": [3000, 3001],
-
-  // Specifies a command that should be run after the container has been created.
-  // "postCreateCommand": "yarn install",
-
-  // Comment out the next line to run as root instead.
   "remoteUser": "node"
 }

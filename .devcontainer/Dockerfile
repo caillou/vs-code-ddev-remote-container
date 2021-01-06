@@ -2,9 +2,6 @@
 ARG VARIANT="14"
 FROM mcr.microsoft.com/vscode/devcontainers/javascript-node:0-${VARIANT}
 
-# RUN curl -L https://raw.githubusercontent.com/drud/ddev/master/scripts/install_ddev.sh | bash
-
-
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
     && apt-get -y install --install-recommends \
     apt-transport-https \
@@ -18,13 +15,6 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
       $(lsb_release -cs) \
       stable" \
     && apt-get update \
-    && apt-get install docker-ce-cli
+    && apt-get install -y docker-ce-cli docker-compose
 
-
-
-# [Optional] Uncomment if you want to install an additional version of node using nvm
-# ARG EXTRA_NODE_VERSION=10
-# RUN su node -c "source /usr/local/share/nvm/nvm.sh && nvm install ${EXTRA_NODE_VERSION}"
-
-# [Optional] Uncomment if you want to install more global node modules
-# RUN sudo -u node npm install -g <your-package-list-here>
+RUN curl -LO https://raw.githubusercontent.com/drud/ddev/master/scripts/install_ddev.sh && bash install_ddev.sh

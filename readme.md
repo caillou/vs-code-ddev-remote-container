@@ -16,7 +16,10 @@ First, SSH into the host and run the following code:
 
 ```
 apt update
-apt install -y docker.io
+apt install -y docker.io zsh
+useradd -m -s /bin/zsh -u 1000 node
+mkdir /home/node/workspace
+chown 1000:1000 /home/node/workspace
 exit
 ```
 
@@ -30,3 +33,17 @@ Then, in this workspace, run the following command:
 mkdir .vscode
 echo '{ "docker.host": "ssh://root@host-ip" }' > .vscode/settings.json
 ```
+
+...
+
+Once the container has started, you can initialize your dev environment.
+
+First, we generate a new ssh key to use with our git repository:
+
+```
+ssh-keygen -f ~/.ssh/id_rsa -t rsa -N ''
+ssh-add ~/.ssh/id_rsa
+more ~/.ssh/id_rsa.pub
+```
+
+Add the newly generated public key to your repository profile.
