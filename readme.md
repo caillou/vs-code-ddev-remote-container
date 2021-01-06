@@ -7,7 +7,7 @@ In this repo, I try to setup a VS Code [Remote Container](https://code.visualstu
 ## Todo
 
 - [ ] Start `dockerd` when the container starts.
-- [ ] Fix the following `ddev` build error:
+- [ ] Fix the following `ddev` build error (`/var/www/html/app/var` is `root`):
   ```
   Fatal error: Uncaught RuntimeException: Could not create directory "/var/www/html/app/var/log/"! in /var/www/html/app/public/typo3/sysext/core/Classes/Utility/GeneralUtility.php:2047
   Stack trace:
