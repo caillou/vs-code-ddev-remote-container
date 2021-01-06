@@ -10,7 +10,7 @@
     "args": { "VARIANT": "14" }
   },
 
-  "runArgs": ["-v", "/var/run/docker.sock:/var/run/docker.sock"],
+  "runArgs": ["--runtime=sysbox-runc"],
 
   "workspaceFolder": "/workspace",
   "workspaceMount": "source=/home/node/workspace,target=/workspace,type=bind,consistency=cached",

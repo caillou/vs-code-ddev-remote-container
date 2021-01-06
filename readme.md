@@ -17,6 +17,9 @@ First, SSH into the host and run the following code:
 ```
 apt update
 apt install -y docker.io zsh
+wget https://github.com/nestybox/sysbox/releases/download/v0.2.1/sysbox_0.2.1-0.ubuntu-focal_amd64.deb
+apt install -y linux-headers-$(uname -r)
+apt install ./sysbox_0.2.1-0.ubuntu-focal_amd64.deb -y
 useradd -m -s /bin/zsh -u 1000 node
 mkdir /home/node/workspace
 chown 1000:1000 /home/node/workspace
